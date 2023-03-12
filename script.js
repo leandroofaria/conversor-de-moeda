@@ -25,9 +25,13 @@ function converter() {
     valueConverted = inputValue.value * 5.55;
     result.innerHTML = valueformatter('pt-BR', 'EUR' )
 
+    animateResult();
+
     } else if(selectedCurrency.value === 'dol') {
         valueConverted = inputValue.value * 5.22
         result.innerHTML = valueformatter('pt-BR', 'USD' )
+
+        animateResult();
     }
 
     inputValue.value = ' ';
@@ -37,4 +41,11 @@ function converter() {
 function valueformatter(locale, currency) {
     const value = valueConverted.toLocaleString(`${locale}` , {style: 'currency' , currency: `${currency}`});
     return `${value}`
+};
+
+function animateResult() {
+    return result.animate([
+        { transform: 'translateY(-150px)'},
+        { transform: 'translateY(0px)'},
+    ], {duration: 1500 });
 };
